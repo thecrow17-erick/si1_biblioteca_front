@@ -1,9 +1,10 @@
+import { FC } from "react"
 
 type props = {
   data: Array<string>
 }
 
-export const THead = ({data}: props) => {
+export const THead:FC<props> = ({data}) => {
   return (
     <thead className="block md:table-header-group">
       <tr className="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">

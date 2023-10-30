@@ -5,14 +5,12 @@ import {
 import {
   useNavigate
 } from 'react-router-dom'
-
+import {toast,Toaster} from 'react-hot-toast'
 
 import { AlertError } from '../../components/alerts';
-import {
-  usePost
-} from '../../hooks/api'
 import { Loading } from '../../components/Loading';
-import { IUser } from '../../interface/user';
+// import { IUser } from '../../interface/user';
+import { useMutationLogin } from '../../hooks/api/auth';
 
 
 
@@ -24,7 +22,7 @@ interface Ibody {
 export const AuthPage = ()=> {
   const navigate = useNavigate();
   
-  const {mutate,isLoading} = usePost<Ibody,IUser>({url:"/auth/signIn"});
+  const {loginMutation} = useMutationLogin();
   const {
     register,
     handleSubmit,
@@ -34,23 +32,31 @@ export const AuthPage = ()=> {
   } = useForm<Ibody>();
 
   const onSubmit:SubmitHandler<Ibody> = ({email,password})=>{
-    mutate({
-      email,
-      password
-    },{
-      onSuccess: (data,variables,context)=>{
-        console.log({data,variables,context});
-        navigate("/admin");
+    console.log(email,password);
+    loginMutation.mutate({email,password},{
+      onSettled: (data,error,variables,context)=>{
+        console.log(data);
+        if(data){
+          localStorage.setItem('auth-token',data.token)
+          toast.success("Ok login")
+          setTimeout(() => {
+            navigate("/admin")
+          }, 3000);
+        }
+        console.log(error);
+        console.log(variables);
+        console.log(context);
       }
     })
   }
 
   
-  return isLoading?(
+  return loginMutation.isLoading?(
     <Loading/>
   ):(
     <>
       <div className="flex items-center min-h-screen bg-white dark:bg-gray-900">
+      <Toaster position="top-center" reverseOrder={false}/>
       <div className="container mx-auto">
         <div className="max-w-md mx-auto my-10">
             <div className="text-center">

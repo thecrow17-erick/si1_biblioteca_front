@@ -7,38 +7,36 @@ import { THead } from '../../../components/tables/THead';
 import { Actions, Td, Tr } from '../../../components/tables';
 
 
-import { useQueryUsers } from '../../../hooks/api/user';
+import { useQueryRoles } from '../../../hooks/api/rol';
 
-export const UserPage = () => {
+export const PageRol = () => {
   const navigate = useNavigate();
-  const {queryUsers} = useQueryUsers();
+  const {queryRoles} = useQueryRoles();
   const dataHead: Array<string> = [
     "Id",
-    "nombre",
-    "Email",
-    "Telefono",
-    "rol"
+    "Descripcion",
+    "CreatedAt",
+    "UpdatedAt",
   ];
-  const dataBody = queryUsers.data?.allUsers?.map((user)=>({
-    id: user.id,
-    nombre: user.nombre,
-    email: user.email,
-    telefono: user.telefono,
-    rol: user.rol.descripcion 
+  const dataBody = queryRoles.data?.allRoles?.map((rol)=>({
+    id: rol.id,
+    descripcion: rol.descripcion,
+    creado: rol.createdAt,
+    modificado: rol.updatedAt
   })) || []
-  return queryUsers.isFetching?(
+  return queryRoles.isFetching?(
     <Loading/>
   ):(
     <div className="xl:px-5 xl:pt-10 ">
       <div className="flex justify-between md:p-0 p-3">
         <div className='xl:flex xl:justify-center'>
-          <h1 className="font-semibold text-lg md:mr-5">Listas de Usuarios</h1>
-          <button onClick={()=> queryUsers.refetch()} className="bg-blue-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
+          <h1 className="font-semibold text-lg md:mr-5">Listas de Roles</h1>
+          <button onClick={()=> queryRoles.refetch()} className="bg-blue-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
           Actualizar
         </button>
         </div>
         <button onClick={()=> navigate('/admin/user/create')} className="bg-green-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
-          Crear Usuario
+          Crear Rol
         </button>
       </div>
       <div className="py-5">
@@ -50,10 +48,10 @@ export const UserPage = () => {
                 <Tr idx={i} key={i}>
                     {
                       Object.entries(b).map(([key,value],idx)=>(
-                        <Td name={key} value={value} key={idx}/>
+                        <Td name={key} value={value!} key={idx}/>
                       ))
                     }
-                    <Actions onDelete={()=>console.log(b.id)} onUpdate={()=>console.log(b.id)} id={b.id}/>
+                    <Actions onDelete={()=>console.log(b.id)} onUpdate={()=>console.log(b.id)} id={b.id!}/>
                 </Tr>
               ))
             }

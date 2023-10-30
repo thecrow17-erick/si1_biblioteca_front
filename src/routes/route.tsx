@@ -4,6 +4,9 @@ import {
 } from '../page/auth'
 import { Header } from '../components/nav';
 import { CreateUser, UserPage } from '../page/admin/user';
+import { UpdateUser } from '../page/admin/user/UpdateUser';
+import { PageRol } from '../page/admin/rol';
+import { PageLibros,CreateBook } from '../page/admin/libro';
 
 interface TPages {
   path: string,
@@ -53,6 +56,32 @@ const rutas :Array<TPages> = [
               {
                 path:"create",
                 element: <CreateUser/>
+              },
+              {
+                path: "update/:id",
+                element: <UpdateUser/>
+              }
+            ]
+          },
+          //roles
+          {
+            path: "roles",
+            element: <PageRol/>
+          },
+          //libros
+          {
+            path: "books",
+            element: <PageLibros/>
+          },
+          {
+            path: "book",
+            children:[
+              {
+                path:"/admin/book",
+                element: <Navigate to="/admin/books"/>
+              },{
+                path: "create",
+                element: <CreateBook/>
               }
             ]
           }

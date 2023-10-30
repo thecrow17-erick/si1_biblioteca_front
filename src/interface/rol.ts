@@ -1,10 +1,12 @@
-export interface IGetRol {
+export interface IListRol {
   total: number,
   allRoles: Array<IRol>
 }
+
 export interface IRol{
-  id: number,
+  id?: number,
   descripcion: string,
-  createdAt: string,
-  updatedAt: string
+  createdAt?: string,
+  updatedAt?: string
 }
+
