@@ -1,6 +1,6 @@
 import { SubmitHandler } from "react-hook-form"
 import { ICreateBook } from "../../../interface"
-import { CrearLibro } from "../../../components/formulario";
+import { CrearLibro } from "../../../components/formulario/user";
 import { useCreateBook } from "../../../hooks/api/books";
 import { Loading } from "../../../components/Loading";
 import { useNavigate } from "react-router-dom";

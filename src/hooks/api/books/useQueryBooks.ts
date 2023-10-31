@@ -3,9 +3,9 @@ import { listBooks } from "../../../query/book";
 
 
 
-export const useQueryBooks = () => {
-  const queryBooks = useQuery(["books"],
-  ()=>listBooks(),{
+export const useQueryBooks = (skip:number,take:number) => {
+  const queryBooks = useQuery(["books",take,skip],
+  ()=>listBooks(skip,take),{
     staleTime: 1000 * 60 * 60
   }
   )

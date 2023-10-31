@@ -40,3 +40,10 @@ export interface IBook{
 		createdAt: string,
 		updatedAt: string
 }
+
+
+//search books
+export interface ISearchBook {
+  id: number,
+  titulo: string,
+}

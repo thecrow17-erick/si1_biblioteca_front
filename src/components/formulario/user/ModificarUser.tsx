@@ -3,10 +3,10 @@ import {
   SubmitHandler,
   useForm,
 } from 'react-hook-form'
-import { AlertError } from '../alerts'
-import { useQueryRoles } from '../../hooks/api/rol'
-import { Loading } from '../Loading'
-import { ICrearUsuario } from '../../interface'
+import { AlertError } from '../../alerts'
+import { useQueryRoles } from '../../../hooks/api/rol'
+import { Loading } from '../../Loading'
+import { ICrearUsuario } from '../../../interface'
 
 
 interface props{

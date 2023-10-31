@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ICreateBook } from '../../interface'
-import { AlertError } from '../alerts'
+import { ICreateBook } from '../../../interface'
+import { AlertError } from '../../alerts'
 interface props{
   onSubmit: SubmitHandler<ICreateBook>,
 }

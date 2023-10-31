@@ -7,6 +7,7 @@ import { CreateUser, UserPage } from '../page/admin/user';
 import { UpdateUser } from '../page/admin/user/UpdateUser';
 import { PageRol } from '../page/admin/rol';
 import { PageLibros,CreateBook } from '../page/admin/libro';
+import { CreateNota, NotaPage } from '../page/admin/notaIngreso';
 
 interface TPages {
   path: string,
@@ -82,6 +83,23 @@ const rutas :Array<TPages> = [
               },{
                 path: "create",
                 element: <CreateBook/>
+              }
+            ]
+          },
+          {
+            path: "nota-ingresos",
+            element: <NotaPage/>
+          },
+          {
+            path: "nota-ingreso",
+            children: [
+              {
+                path: "nota-ingreso",
+                element: <Navigate to="/admin/nota-ingresos"/>
+              },
+              {
+                path: "create",
+                element: <CreateNota/>
               }
             ]
           }

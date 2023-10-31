@@ -6,7 +6,7 @@ import {toast,Toaster} from 'react-hot-toast';
 
 import { Loading } from '../../../components/Loading';
 import { useCreateUser } from '../../../hooks/api/user';
-import { CrearUser } from '../../../components/formulario/CrearUser';
+import { CrearUser } from '../../../components/formulario/user';
 import { ICrearUsuario } from '../../../interface';
 
 

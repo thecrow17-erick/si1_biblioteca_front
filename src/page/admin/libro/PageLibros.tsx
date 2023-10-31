@@ -10,7 +10,7 @@ import { useQueryBooks } from '../../../hooks/api/books/useQueryBooks';
 
 export const PageLibros = () => {
   const navigate = useNavigate();
-  const {queryBooks} = useQueryBooks();
+  const {queryBooks} = useQueryBooks(0,Number.MAX_VALUE);
   const dataHead: Array<string> = [
     "Id",
     "Titulo",
