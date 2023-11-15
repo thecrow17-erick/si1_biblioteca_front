@@ -2,12 +2,13 @@ import { Navigate } from 'react-router-dom';
 import {
   AuthPage
 } from '../page/auth'
-import { Header } from '../components/nav';
+import { Header,Navigator } from '../components/nav';
 import { CreateUser, UserPage } from '../page/admin/user';
 import { UpdateUser } from '../page/admin/user/UpdateUser';
 import { PageRol } from '../page/admin/rol';
 import { PageLibros,CreateBook } from '../page/admin/libro';
 import { CreateNota, NotaPage } from '../page/admin/notaIngreso';
+import { PageBooks } from '../page/cliente/books';
 
 interface TPages {
   path: string,
@@ -20,6 +21,10 @@ const rutas :Array<TPages> = [
     path: "/",
     children: [
       {
+        path: "/",
+        element: <Navigate to="/auth/signIn"/>
+      },
+      {
         path: "auth",
         children: [
           {
@@ -30,7 +35,8 @@ const rutas :Array<TPages> = [
             element: <AuthPage/>
           }
         ]
-      },{
+      },
+      {
         path:"admin",
         element: <Header/>,
         children: [
@@ -102,6 +108,20 @@ const rutas :Array<TPages> = [
                 element: <CreateNota/>
               }
             ]
+          }
+        ]
+      },
+      {
+        path: "/cliente",
+        element: <Navigator />,
+        children: [
+          {
+            path: "/cliente",
+            element: <Navigate to="/cliente/books"/>,
+          },
+          {
+            path: "books",
+            element: <PageBooks/>
           }
         ]
       }

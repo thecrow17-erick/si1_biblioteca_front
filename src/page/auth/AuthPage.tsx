@@ -5,11 +5,10 @@ import {
 import {
   useNavigate
 } from 'react-router-dom'
-import {toast,Toaster} from 'react-hot-toast'
+import toast,{Toaster} from 'react-hot-toast'
 
 import { AlertError } from '../../components/alerts';
 import { Loading } from '../../components/Loading';
-// import { IUser } from '../../interface/user';
 import { useMutationLogin } from '../../hooks/api/auth';
 
 
@@ -36,11 +35,17 @@ export const AuthPage = ()=> {
     loginMutation.mutate({email,password},{
       onSettled: (data,error,variables,context)=>{
         console.log(data);
-        if(data){
+        if(data?.user.rol.descripcion === "Administrador"){
           localStorage.setItem('auth-token',data.token)
           toast.success("Ok login")
           setTimeout(() => {
             navigate("/admin")
+          }, 3000);
+        }else {
+          localStorage.setItem('auth-token',data!.token)
+          toast.success("Ok login")
+          setTimeout(() => {
+            navigate("/cliente")
           }, 3000);
         }
         console.log(error);
