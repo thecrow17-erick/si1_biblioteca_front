@@ -10,7 +10,7 @@ interface props{
 
 export const SearchBooks:FC<props> = ({books,onBookClick}) => {
   const [activateSearch, setActivateSearch] = useState<Array<ISearchBook>>([]);
-  const [titulo,setTitulo] = useState<string>("");
+  const [titulo,setTitulo] = useState("");
   const handleSearch = ({target}: ChangeEvent<HTMLInputElement>)=>{
     setTitulo(target.value)
     if(target.value === ""){

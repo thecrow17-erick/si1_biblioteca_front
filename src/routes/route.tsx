@@ -9,6 +9,8 @@ import { PageRol } from '../page/admin/rol';
 import { PageLibros,CreateBook } from '../page/admin/libro';
 import { CreateNota, NotaPage } from '../page/admin/notaIngreso';
 import { PageBooks } from '../page/cliente/books';
+import { PageReserva } from '../page/cliente/reservas/PageReserva';
+import { CreateReserva } from '../page/cliente/reservas/CreateReserva';
 
 interface TPages {
   path: string,
@@ -122,6 +124,14 @@ const rutas :Array<TPages> = [
           {
             path: "books",
             element: <PageBooks/>
+          },
+          {
+            path: "reservas",
+            element: <PageReserva/>
+          },
+          {
+            path: "reserva/create",
+            element: <CreateReserva/>
           }
         ]
       }

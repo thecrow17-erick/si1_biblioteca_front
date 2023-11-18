@@ -10,7 +10,7 @@ interface props{
 
 export const BookCard:FC<props> = ({cantidad,imagen,titulo,precio}) => {
   return (
-    <div className="group block p-10">
+    <div className="group block xl:w-2/3">
       <img
         src={imagen}
         alt={titulo}
