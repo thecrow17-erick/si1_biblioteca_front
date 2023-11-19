@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {SubmitHandler, useForm} from 'react-hook-form'
+
 import { Loading } from '../../../components/Loading';
 import { SearchBooks } from '../../../components/formulario/notaIngreso';
 import {useQueryCliente} from '../../../hooks/api/books'
 import { ISearchBook } from '../../../interface';
-import {SubmitHandler, useForm} from 'react-hook-form'
 import { IBodyReserva } from '../../../interface/reserva';
 import { AlertError } from '../../../components/alerts';
 import { useCreateReserva } from '../../../hooks/api/reservas';
@@ -11,6 +13,7 @@ import { useCreateReserva } from '../../../hooks/api/reservas';
 export const CreateReserva = () =>{
   const {register,handleSubmit, formState:{errors}} = useForm<IBodyReserva>()
   const {queryBooks} = useQueryCliente();
+  const navigate = useNavigate();
   const [libroSearch, setLibroSearch] = useState<ISearchBook>();
   const {mutationReserva} = useCreateReserva();
   const onBookClick = (data: ISearchBook)=>{
@@ -27,9 +30,13 @@ export const CreateReserva = () =>{
       libroId: libroSearch!.id!,
       fecha_reserva: `${fecha_reserva}T00:00:00.000Z`,
     }
-    mutationReserva.mutate({body,token},{
+    mutationReserva.mutate({Body:body,token},{
       onSettled(data, error, variables, context) {
         console.log(data);
+        if(data){
+          alert("Reserva creada")
+          navigate("/cliente/reservas");
+        }
         console.log(error)
         console.log(variables)
         console.log(context)

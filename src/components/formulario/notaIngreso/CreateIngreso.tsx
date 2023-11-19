@@ -39,7 +39,7 @@ export const CreateIngreso = () => {
     console.log(proveedor);
     
     if(libro.length === 0 || proveedor === ""){
-      return false;
+      return alert("Ingrese algun libro o proveedor")
     }
     const dataNota = libro.map((value)=>({
       libroId: value.libroId,

@@ -2,7 +2,7 @@ import {Axios} from '../../api'
 import { IBodyIngreso, ICreateNota, INotaIngreso } from '../../interface'
 
 export const listNotas =async (): Promise<INotaIngreso> => {
-  const {data} = await Axios.get<INotaIngreso>("nota-ingreso");
+  const {data} = await Axios.get<INotaIngreso>("/nota-ingreso");
   console.log(data);
   return data;
 }

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useQueryNota } from "../../../hooks/api/notaIngreso";
 import { Loading } from "../../../components/Loading";
-import { Actions, THead, Td, Tr } from "../../../components/tables";
+import {  THead, Td, Tr } from "../../../components/tables";
 
 export const NotaPage = () => {
   const navigate = useNavigate();
@@ -44,7 +44,11 @@ export const NotaPage = () => {
                         <Td name={key} value={value!} key={idx}/>
                       ))
                     }
-                    <Actions onDelete={()=>console.log(b.id)} onUpdate={()=>console.log(b.id)} id={b.id!}/>
+                    <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">
+                        Delete
+                      </button>
+                    </td>
                 </Tr>
               ))
             }

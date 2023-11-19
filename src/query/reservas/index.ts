@@ -14,12 +14,22 @@ export const listReservasClientes = async(token: string):Promise<IReservaCliente
 }
 
 
-export const postReservas = async(Body: IBodyReservaAxios,token: string):Promise<IResponseReserva> =>{
+export const postReservas = async({Body,token}: {Body: IBodyReservaAxios,token: string}):Promise<IResponseReserva> =>{
   const {data} = await Axios.post<IResponseReserva>("/reserva",Body,{
     headers:{
       "auth-token": token
     }
   });
+  console.log(data);
+  return data;
+}
+
+export const deleteReserva = async({id,token}: {id:number,token: string}):Promise<IResponseReserva> => {
+  const {data} = await Axios.delete<IResponseReserva>(`/reserva/${id}`,{
+    headers:{
+      "auth-token": token
+    }
+  })
   console.log(data);
   return data;
 }

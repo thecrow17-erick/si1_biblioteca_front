@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
-import { postReservas } from "../../../query/reservas";
+import { deleteReserva } from "../../../query/reservas";
 
-export const useCreateReserva = () => {
+export const useDeleteReserva = () => {
   const mutationReserva = useMutation({
-    mutationFn: postReservas
+    mutationFn: deleteReserva
   })
   return {
     mutationReserva

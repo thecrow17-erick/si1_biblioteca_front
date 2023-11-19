@@ -15,7 +15,9 @@ export const Navigator = () => {
             <Link to={`/cliente/reservas`} className="text-white mr-4 bg-gray-500 pt-4 p-4 pr-5 pl-5 hover:bg-gray-600 transition-all rounded" ><i className="fas fa-question"></i> Reservas</Link>
           </li>
           <li>
-            <a className="text-white mr-4 bg-gray-500 pt-4 p-4 pr-5 pl-5 hover:bg-gray-600 transition-all rounded" href="#"><i className="fas fa-reply"></i> Cerrar Sesion</a>
+            <Link to={`/auth/signIn`} className="text-white mr-4 bg-gray-500 pt-4 p-4 pr-5 pl-5 hover:bg-gray-600 transition-all rounded" ><i className="fas fa-reply" onClick={()=>{
+              localStorage.removeItem("auth-token");
+            }}></i> Cerrar Sesion</Link>
           </li>
         </ul>
       </nav>
