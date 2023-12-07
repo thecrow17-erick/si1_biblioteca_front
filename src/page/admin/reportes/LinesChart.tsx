@@ -29,7 +29,7 @@ interface props{
 }
 
 export const LinesChart = ({reporte}:props) => {
-    var beneficios = [0, 56, 20, 36, 80, 40, 30, -20, 25, 30, 12, 60];
+    // var beneficios = [0, 56, 20, 36, 80, 40, 30, -20, 25, 30, 12, 60];
     var dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 
     var midata = {

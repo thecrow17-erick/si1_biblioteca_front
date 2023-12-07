@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { Loading } from "../../../components/Loading";
+// import { useNavigate } from "react-router-dom";
+// import { Loading } from "../../../components/Loading";
 import {  THead, Td, Tr } from "../../../components/tables";
 import { bitacora } from "../../../interface/bitacora";
 
 export const PageBitacora = () => {
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
     const dataHead: Array<string> = [
         "Id",
         "Usuario",

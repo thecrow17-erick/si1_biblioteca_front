@@ -1,17 +1,17 @@
 import { Toaster } from "react-hot-toast"
 // import { CrearUser } from "../../../components/formulario"
-import { SubmitHandler } from "react-hook-form"
-import { ICrearUsuario } from "../../../interface"
+// import { SubmitHandler } from "react-hook-form"
+// import { ICrearUsuario } from "../../../interface"
 import { useParams } from "react-router-dom"
-import { ModificarUser } from "../../../components/formulario/user/ModificarUser";
-import { useNavigate } from "react-router-dom";
-import { useQueryUser } from "../../../hooks/api/user";
+// import { ModificarUser } from "../../../components/formulario/user/ModificarUser";
+// import { useNavigate } from "react-router-dom";
+// import { useQueryUser } from "../../../hooks/api/user";
 
 export const UpdateUser = () => {
   const {id} = useParams()
   console.log(id);
-  const navigate = useNavigate();
-  const {queryUser} = useQueryUser(parseInt(id!));
+  // const navigate = useNavigate();
+  // const {queryUser} = useQueryUser(parseInt(id!));
   // const onSubmit:SubmitHandler<ICrearUsuario> = ({email,nombre,password,rolId,telefono})=>{
   //   queryUser.({
   //     email,nombre,password,rolId: +rolId,telefono

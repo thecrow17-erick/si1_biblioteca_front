@@ -41,21 +41,21 @@ export const PageReservas = () => {
         },
       })
     }
-    
-    const onClickEntregadoReserva = (id:number)=>{
-      mutationReserva.mutate({id,token},{
-        onSettled(data, error, variables, context) {
-          if(data){
-            alert("Se ha entregado la reserva");
-            queryReservas.refetch();
-          }
-          console.log(data);
-          console.log(error);
-          console.log(variables);
-          console.log(context);    
-        },
-      })
-    }
+    // const onClickEntregadoReserva = (id:number)=>{
+    //   mutationReserva.mutate({id,token},{
+    //     onSettled(data, error, variables, context) {
+    //       if(data){
+    //         alert("Se ha entregado la reserva");
+    //         queryReservas.refetch();
+    //       }
+    //       console.log(data);
+    //       console.log(error);
+    //       console.log(variables);
+    //       console.log(context);    
+    //     },
+    //   })
+    // } 
+   
 
     return  queryReservas.isFetching || mutationReserva.isLoading? (
         <Loading/>
