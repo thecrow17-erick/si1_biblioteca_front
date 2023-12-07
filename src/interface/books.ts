@@ -27,7 +27,7 @@ export interface ICreateBook {
   edicion: string,
   precio: number,
   fechaLanzamiento: string,
-  img: File
+  img: File[]
 }
 export interface IBook{
     id: number,
