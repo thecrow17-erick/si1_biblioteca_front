@@ -37,7 +37,7 @@ export const CreateUser = () => {
   ):(
     <div className="md:w-2/3 w-full md:p-2 p-5">
       <Toaster position='top-center'/>
-      <h1 className="font-bold text-2xl text-center">Crear Productos</h1>
+      <h1 className="font-bold text-2xl text-center">Crear Usuario</h1>
       <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
         <CrearUser onSubmit={onSubmit}/>
       </div>

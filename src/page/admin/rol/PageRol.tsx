@@ -8,10 +8,13 @@ import { Actions, Td, Tr } from '../../../components/tables';
 
 
 import { useQueryRoles } from '../../../hooks/api/rol';
+import { useDeleteRol } from '../../../hooks/api/rol/useDeleteRol';
 
 export const PageRol = () => {
   const navigate = useNavigate();
   const {queryRoles} = useQueryRoles();
+  const {mutationDeleteRol} = useDeleteRol();
+
   const dataHead: Array<string> = [
     "Id",
     "Descripcion",
@@ -24,6 +27,23 @@ export const PageRol = () => {
     creado: rol.createdAt,
     modificado: rol.updatedAt
   })) || []
+
+  const onClickDeleteRol = (id:number)=>{
+  
+    mutationDeleteRol.mutate(id,{
+      onSettled(data, error, variables, context) {
+        if(data){
+          alert("Se ha eliminado la reserva");
+          queryRoles.refetch();
+        }
+        console.log(data);
+        console.log(error);
+        console.log(variables);
+        console.log(context);    
+      },
+    })
+  }
+
   return queryRoles.isFetching?(
     <Loading/>
   ):(
@@ -35,7 +55,7 @@ export const PageRol = () => {
           Actualizar
         </button>
         </div>
-        <button onClick={()=> navigate('/admin/user/create')} className="bg-green-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
+        <button onClick={()=> navigate('/admin/roles/create')} className="bg-green-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
           Crear Rol
         </button>
       </div>
@@ -51,7 +71,7 @@ export const PageRol = () => {
                         <Td name={key} value={value!} key={idx}/>
                       ))
                     }
-                    <Actions onDelete={()=>console.log(b.id)} onUpdate={()=>console.log(b.id)} id={b.id!}/>
+                    <Actions onDelete={()=>onClickDeleteRol(b.id!)} onUpdate={()=>console.log(b.id)} id={b.id!}/>
                 </Tr>
               ))
             }

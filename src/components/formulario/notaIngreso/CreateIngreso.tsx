@@ -110,11 +110,13 @@ export const CreateIngreso = () => {
       </table>
       
       <div>
-        <label> Proveedor</label>
+        <label> Proveedor: </label>
         <input className="border-black" type="text" value={proveedor} onChange={(e:ChangeEvent<HTMLInputElement>)=>setProveedor(e.target.value)}/>
       </div>
       <div className="mt-10 w-full px-20 flex justify-between">
-        <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-10 border  rounded">
+        <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-10 border  rounded"
+        onClick={() => navigate('/admin/nota-ingresos')}
+        >
           Cancelar
         </button>
         <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-10 border  rounded"

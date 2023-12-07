@@ -11,6 +11,11 @@ import { CreateNota, NotaPage } from '../page/admin/notaIngreso';
 import { PageBooks } from '../page/cliente/books';
 import { PageReserva } from '../page/cliente/reservas/PageReserva';
 import { CreateReserva } from '../page/cliente/reservas/CreateReserva';
+import { PageReservas } from '../page/admin/reservas';
+import { PageBitacora } from '../page/admin/bitacora';
+import { GenerarNotaAlquiler } from '../page/admin/reservas/GenerarNotaAlquiler';
+import { CreateRol } from '../page/admin/rol/CreateRol';
+import { PageReportes } from '../page/admin/reportes';
 
 interface TPages {
   path: string,
@@ -48,7 +53,7 @@ const rutas :Array<TPages> = [
           },
           {
             path: "home",
-            element: <>ugu</>
+            element: <PageReportes/>
           },
           //usuarios
           {
@@ -77,6 +82,15 @@ const rutas :Array<TPages> = [
             path: "roles",
             element: <PageRol/>
           },
+          {
+            path: "roles",
+            children:[
+              {
+                path: "create",
+                element: <CreateRol/>
+              }
+            ]
+          },
           //libros
           {
             path: "books",
@@ -94,6 +108,7 @@ const rutas :Array<TPages> = [
               }
             ]
           },
+          //Nota de Ingresos
           {
             path: "nota-ingresos",
             element: <NotaPage/>
@@ -110,6 +125,29 @@ const rutas :Array<TPages> = [
                 element: <CreateNota/>
               }
             ]
+          },
+          //Reservas y Nota de Alquiler
+          {
+            path: "reservas",
+            element: <PageReservas/>
+          },
+          {
+            path: "reservas",
+            children:[
+              // {
+              //   path:"/admin/reservas",
+              //   element: <Navigate to="/admin/reservas"/>
+              // },
+              {
+                path: "nota-alquiler-create",
+                element: <GenerarNotaAlquiler/>
+              }
+            ]
+          },
+          //Bitacora
+          {
+            path: "Bitacora",
+            element: <PageBitacora/>
           }
         ]
       },

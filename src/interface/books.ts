@@ -20,6 +20,7 @@ export interface Almacen {
   cantidad: number;
 }
 
+
 //crear libro
 export interface ICreateBook {
   titulo: string,

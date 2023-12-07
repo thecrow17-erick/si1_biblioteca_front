@@ -15,7 +15,8 @@ export const createBook = async (datos: FormData):Promise<IBook> => {
 }
 
 export const BooksClient = async ():Promise<IBooksCliente> => {
-  const {data} = await Axios.get<IBooksCliente>("/libro/cliente");
+  // const {data} = await Axios.get<IBooksCliente>("/libro/cliente");
+  const {data} = await Axios.get<IBooksCliente>("/libro");
   console.log(data);
   return data;
 }
