@@ -2,8 +2,6 @@ import { CreateIngreso } from '../../../components/formulario/notaIngreso/Create
 
 
 export const CreateNota = () => {
-
-
   return (
     <>
       <div className="md:w-4/5 w-full md:p-2 p-5">

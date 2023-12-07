@@ -1,14 +1,20 @@
 import { Axios } from "../../api";
-import { IBodyReservaAxios, IReservaCliente, IResponseReserva } from "../../interface/reserva";
+import { IBodyReservaAxios, IReservaAdmin, IReservaCliente, IResponseReserva } from "../../interface/reserva";
 
 
 
-export const listReservasClientes = async(token: string):Promise<IReservaCliente> =>{
+export const listReservasCliente = async(token: string):Promise<IReservaCliente> =>{
   const {data} = await Axios.get<IReservaCliente>("/reserva/cliente",{
     headers:{
       "auth-token": token
     }
   });
+  console.log(data);
+  return data;
+}
+
+export const listReservasClientes = async():Promise<IReservaAdmin> =>{
+  const {data} = await Axios.get<IReservaAdmin>("/reserva/admin");
   console.log(data);
   return data;
 }

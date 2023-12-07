@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { THead, Td, Tr } from "../../../components/tables";
-import { useQueryReservas,useDeleteReserva } from "../../../hooks/api/reservas"
+import { useDeleteReserva, useQueryReservasCliente } from "../../../hooks/api/reservas"
 import { Loading } from "../../../components/Loading";
 
 
@@ -8,7 +8,7 @@ import { Loading } from "../../../components/Loading";
 export const PageReserva = () => {
   const token = localStorage.getItem("auth-token")!;
   const navigate = useNavigate();
-  const {queryReservas} = useQueryReservas(token);
+  const {queryReserva} = useQueryReservasCliente(token);
   const {mutationReserva} = useDeleteReserva();
 
   const dataHead = [
@@ -18,7 +18,7 @@ export const PageReserva = () => {
     "libro",
     "precio"
   ]
-  const dataBody = queryReservas.data?.allReservas.map((reserva)=>({
+  const dataBody = queryReserva.data?.allReservas.map((reserva)=>({
     id: reserva.id,
     entregado: reserva.estado,
     fecha: reserva.fecha_reserva,
@@ -32,7 +32,7 @@ export const PageReserva = () => {
       onSettled(data, error, variables, context) {
         if(data){
           alert("Se ha eliminado la reserva");
-          queryReservas.refetch();
+          queryReserva.refetch();
         }
         console.log(data);
         console.log(error);
@@ -42,14 +42,14 @@ export const PageReserva = () => {
     })
   }
 
-  return queryReservas.isFetching || mutationReserva.isLoading? (
+  return queryReserva.isFetching || mutationReserva.isLoading? (
     <Loading/>
   ):(
     <div className="xl:px-5 xl:pt-10 ">
       <div className="flex justify-between md:p-0 p-3">
         <div className='xl:flex xl:justify-center'>
           <h1 className="font-semibold text-lg md:mr-5">Listas de Libros</h1>
-          <button onClick={()=> queryReservas.refetch()} className="bg-blue-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
+          <button onClick={()=> queryReserva.refetch()} className="bg-blue-700 hover:bg-green-900 p-2 rounded-lg font-semibold text-white">
           Actualizar
         </button>
         </div>

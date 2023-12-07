@@ -7,6 +7,7 @@ import { AlertError } from '../../alerts'
 import { useQueryRoles } from '../../../hooks/api/rol'
 import { Loading } from '../../Loading'
 import { ICrearUsuario } from '../../../interface'
+import { useNavigate } from 'react-router-dom'
 
 
 interface props{
@@ -15,6 +16,7 @@ interface props{
 }
 
 export const CrearUser:FC<props> = ({onSubmit}) => {
+  const navigate = useNavigate();
   const {queryRoles} = useQueryRoles();
   const {
     register,
@@ -24,8 +26,6 @@ export const CrearUser:FC<props> = ({onSubmit}) => {
     }
   } = useForm<ICrearUsuario>()
 
-
-  
   return (
     <form className="mt-2" onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-6">
@@ -144,12 +144,22 @@ export const CrearUser:FC<props> = ({onSubmit}) => {
           )
         }
       </div>
-      <button
-        type="submit"
-        className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
-        >
-        Send Enquiry
-      </button>
+      <div className="mt-10 w-full px-20 flex justify-between">
+
+            <button className="inline-block w-full rounded-lg mt-5 bg-red-600 px-5 py-3 font-medium text-white sm:w-auto"
+            onClick={() => navigate('/admin/users')}
+            >
+            Cancelar
+            </button>
+
+            <button
+            type="submit"
+            className="inline-block w-full rounded-lg mt-5 bg-black px-5 py-3 font-medium text-white sm:w-auto"
+            >
+            Send Enquiry
+            </button>
+
+        </div>
     </form>
   )
 }

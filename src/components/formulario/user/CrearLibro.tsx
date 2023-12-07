@@ -2,12 +2,14 @@ import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ICreateBook } from '../../../interface'
 import { AlertError } from '../../alerts'
+import { useNavigate } from 'react-router-dom'
 interface props{
   onSubmit: SubmitHandler<ICreateBook>,
 }
 
 
 export const CrearLibro:FC<props> = ({onSubmit}) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -120,12 +122,22 @@ export const CrearLibro:FC<props> = ({onSubmit}) => {
           }
         </label>
       </div>
-      <button
-        type="submit"
-        className="inline-block w-full rounded-lg mt-5 bg-black px-5 py-3 font-medium text-white sm:w-auto"
-        >
-        Send Enquiry
-      </button>
+      <div className="mt-10 w-full px-20 flex justify-between">
+
+            <button className="inline-block w-full rounded-lg mt-5 bg-red-600 px-5 py-3 font-medium text-white sm:w-auto"
+            onClick={() => navigate('/admin/reservas')}
+            >
+            Cancelar
+            </button>
+
+            <button
+            type="submit"
+            className="inline-block w-full rounded-lg mt-5 bg-black px-5 py-3 font-medium text-white sm:w-auto"
+            >
+            Send Enquiry
+            </button>
+
+        </div>
     </form>
   )
 }

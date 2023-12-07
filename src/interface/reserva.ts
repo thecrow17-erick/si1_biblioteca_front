@@ -4,12 +4,26 @@ export interface IReservaCliente {
   total:       number;
   allReservas: Reserva[];
 }
+export interface IReservaAdmin {
+  total:       number;
+  allReservas: ReservaAdmin[];
+}
 
 export interface Reserva {
   id:            number;
   estado:        boolean;
   fecha_reserva: string;
   libro:         Libro;
+}
+export interface ReservaAdmin {
+  id:            number;
+  estado:        boolean;
+  fecha_reserva: string;
+  libro:         Libro;
+  cliente:       {
+    id:          number,
+    nombre:       string
+  };
 }
 
 export interface Libro {
